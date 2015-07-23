@@ -1,7 +1,7 @@
 # configures mcelog
 class mcelog::config {
-  if $mcelog::package_ensure == 'absent' {
-    $file_ensure = $mcelog::package_ensure
+  if $mcelog::version == 'absent' {
+    $file_ensure = $mcelog::version
   } else {
     $file_ensure = 'file'
   }

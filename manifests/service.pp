@@ -1,6 +1,6 @@
 # Takes care of starting mcelog service
 class mcelog::service {
-  if $mcelog::package_ensure == 'uninstall' {
+  if $mcelog::version == 'uninstall' {
     $service_ensure_real = 'stopped'
     $service_enable_real = false
   } else {
