@@ -9,18 +9,16 @@
 # white space is not allowed in value currently, except at the end where it is dropped
 #
 
-# in general all command line options that are not commands work here
-# see man mcelog or mcelog --help for a list
-# e.g. to enable the --no-syslog option use
-#no-syslog = yes   (or no to disable)
-
 # by default, disable extended error logging on newer Intel processors
-no-imc-log = yes
+no-imc-log = <%= scope['mcelog::no_imc_log'] %>
 
 # below are the options which are not command line options
 
 # Set CPU type for which mcelog decodes events:
+<% if scope['mcelog::cpu'] then -%>cpu = <%= scope['mcelog::cpu'] %>
+<% else -%>
 #cpu = type
+<% end -%>
 # for valid values for type please see mcelog --help
 # If this value is set incorrectly the decoded output will be likely incorrect.
 # by default when this parameter is not set mcelog uses the CPU it is running on
@@ -28,20 +26,20 @@ no-imc-log = yes
 # the CPU type which is used too when available and not overriden.
 
 # Enable daemon mode:
-daemon = yes
+daemon = <%= scope['mcelog::daemon'] %>
 # By default mcelog just processes the currently pending events and exits.
 # in daemon mode it will keep running as a daemon in the background and poll
 # the kernel for events and then decode them.
 
 # Filter out known broken events by default
-filter = yes
+filter = <%= scope['mcelog::filter'] %>
 # don't log memory errors individually
 # they still get accounted if that is enabled
-filter-memory-errors = yes
+filter-memory-errors = <%= scope['mcelog::filter_memory_errors'] %>
 
 # output in undecoded raw format to be easier machine readable
 # (default is decoded)
-#raw = yes
+raw = <%= scope['mcelog::raw'] %>
 
 # Set CPU Mhz to decode uptime from time stamp counter (output
 # unreliable, not needed on new kernels which report the event time
@@ -56,13 +54,13 @@ filter-memory-errors = yes
 
 # log output options
 # Log decoded machine checks in syslog (default stdout or syslog for daemon)
-syslog = yes
+syslog = <%= scope['mcelog::syslog'] %>
 # Log decoded machine checks in syslog with error level
-syslog-error = yes
+syslog-error = <%= scope['mcelog::syslog_error'] %>
 # Never log anything to syslog
-#no-syslog = yes
+no-syslog = <%= scope['mcelog::no_syslog'] %>
 # Append log output to logfile instead of stdout. Only when no syslog logging is active
-#logfile = filename
+logfile = <%= scope['mcelog::logfile'] %>
 
 # Use SMBIOS information to decode DIMMs (needs root)
 # This function is not recommended to use right now and generally not needed
@@ -73,7 +71,7 @@ syslog-error = yes
 # note that the triggers will run as this user too
 # setting this to non root will mean that triggers cannot take some corrective
 # action, like offlining objects
-run-credentials-user = root
+run-credentials-user = <%= scope['mcelog::run_credentials_user'] %>
 # group to run as daemon with
 # default to the group of the run-credentials-user
 #run-credentials-group = nobody
