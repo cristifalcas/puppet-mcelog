@@ -1,4 +1,5 @@
 # mcelog
+[![Build Status](https://travis-ci.org/cristifalcas/puppet-mcelog.png?branch=master)](https://travis-ci.org/cristifalcas/puppet-mcelog)
 
 #### Table of Contents
 
