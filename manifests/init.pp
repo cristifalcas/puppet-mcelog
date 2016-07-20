@@ -60,10 +60,10 @@ class mcelog (
 ) inherits mcelog::params {
   validate_bool($skip_virtual)
 
-  if !($::is_virtual and $skip_virtual) {
-    contain mcelog::install
-    contain mcelog::config
-    contain mcelog::service
+  if !(str2bool($::is_virtual) and str2bool($skip_virtual)) {
+    contain ::mcelog::install
+    contain ::mcelog::config
+    contain ::mcelog::service
 
     Class['mcelog::install'] ->
     Class['mcelog::config'] ~>
