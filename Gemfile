@@ -21,6 +21,7 @@ gem 'mime-types', '~> 1.0', {"platforms"=>["ruby_18"], "groups"=>["development"]
 gem 'rspec-puppet-facts'
 gem 'metadata-json-lint'
 gem 'rspec', '< 3.2.0', {"platforms"=>["ruby_18"]}
+gem 'addressable', '-~ 2.3', {"platforms"=>["ruby_18"]}
 gem 'json', '< 2.0', {"platforms"=>["ruby_18"]}
 gem 'json_pure', '< 2.0', {"platforms"=>["ruby_18"]}
 gem 'webmock'
