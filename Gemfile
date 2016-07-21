@@ -25,4 +25,3 @@ gem 'addressable', '~> 2.3.0', {"platforms"=>["ruby_18"]}
 gem 'webmock', '~> 1.0', {"platforms"=>["ruby_18"]}
 gem 'json', '< 2.0', {"platforms"=>["ruby_18"]}
 gem 'json_pure', '< 2.0', {"platforms"=>["ruby_18"]}
-gem 'webmock'
