@@ -15,7 +15,8 @@ no-imc-log = <%= scope['mcelog::no_imc_log'] %>
 # below are the options which are not command line options
 
 # Set CPU type for which mcelog decodes events:
-<% if scope['mcelog::cpu'] then -%>cpu = <%= scope['mcelog::cpu'] %>
+<% unless [nil, :undefined, :undef, ''].include?(scope['mcelog::cpu']) -%>
+cpu = <%= scope['mcelog::cpu'] %>
 <% else -%>
 #cpu = type
 <% end -%>
@@ -110,10 +111,6 @@ dmi-prepopulate = no
 # be per channel
 # The default of 10/24h is reasonable for server quality
 # DDR3 DIMMs as of 2009/10
-#uc-error-trigger = dimm-error-trigger
-uc-error-threshold = dimm-error-trigger
-#ce-error-trigger = dimm-error-trigger
-ce-error-threshold = dimm-error-trigger
 
 [socket]
 # Memory error accounting per socket
