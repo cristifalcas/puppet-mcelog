@@ -12,6 +12,10 @@
 #
 # $skip_virtual::               if true, don't do anything on virtual machines
 #
+# $delete_mcelog_setup::        by default, on el7 it tries to start mcelog twice and expects the first run will fail
+#                               This doesn't happen on all kernels, so we can allow for this to be disabled here
+#
+#
 # $no_imc_log::                 by default, disable extended error logging on newer Intel processors
 #
 # $cpu::                        Set CPU type for which mcelog decodes events
@@ -46,6 +50,7 @@ class mcelog (
   $service_ensure       = $mcelog::params::service_ensure,
   $service_enable       = $mcelog::params::service_enable,
   $skip_virtual         = $mcelog::params::skip_virtual,
+  $delete_mcelog_setup  = $mcelog::params::delete_mcelog_setup,
   $no_imc_log           = $mcelog::params::no_imc_log,
   $cpu                  = $mcelog::params::cpu,
   $daemon               = $mcelog::params::daemon,

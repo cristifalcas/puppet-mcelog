@@ -1,3 +1,0 @@
-[Service]
-ExecStartPre=
-ExecStart=/usr/sbin/mcelog --ignorenodev --daemon --foreground

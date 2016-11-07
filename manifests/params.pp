@@ -18,8 +18,15 @@ class mcelog::params {
   $run_credentials_user = 'root'
 
   case $::operatingsystemmajrelease {
-    '6'     : { $service = 'mcelogd' }
-    '7'     : { $service = 'mcelog' }
-    default : { }
+    '6'     : {
+      $service = 'mcelogd'
+      $delete_mcelog_setup = undef
+    }
+    '7'     : {
+      $service = 'mcelog'
+      $delete_mcelog_setup = false
+    }
+    default : {
+    }
   }
 }
