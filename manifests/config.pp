@@ -14,7 +14,7 @@ class mcelog::config {
     content => template("${module_name}/mcelog.conf.erb"),
   }
 
-  if $::operatingsystemmajrelease == 7 and $mcelog::delete_mcelog_setup {
+  if $::operatingsystemmajrelease == '7' and $mcelog::delete_mcelog_setup {
     file { '/etc/mcelog/mcelog.setup':
       ensure  => $file_ensure,
       owner   => 'root',

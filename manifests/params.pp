@@ -27,6 +27,7 @@ class mcelog::params {
       $delete_mcelog_setup = false
     }
     default : {
+      fail("Unknown release ${::operatingsystemmajrelease}")
     }
   }
 }
